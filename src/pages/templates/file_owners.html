@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <body>
+  	<h1>List of folders</h1>
+  	<ul>
+    {% for file in files%}
+      {% if file.mimeType == "application/vnd.google-apps.folder"%}
+        <li><strong>{{ file.title }}</strong>: {{ file.ownerNameString }}</li>
+      {% else %}
+        <li>{{ file.title }}: {{ file.ownerNameString }}</li>
+        <!--
+        {{ file }}
+        -->
+      {% endif %}
+    {% endfor %}
+	</ul>
+  </body>
+</html>
+{% endautoescape %}
